@@ -20,7 +20,7 @@ public class CommandProcessor
         switch (command)
         {
             case"ayuda":
-                utils.FontColor(ConsoleColor.Green, $"Lista de comandos {utils.HelpEmoji} \n");
+                utils.FontColor(ConsoleColor.Green, $"Lista de comandos {Utils.Utils.HelpEmoji} \n");
                 Console.Write($"'ayuda' : Lista todos los comandos.\n" +
                               "'crear -[descripcion]' : Crea una nueva tarea. Ej: crear -Comprar tomates\n" +
                               "'editar -[id] -[descripcion]' : Edita una tarea existente. Ej: editar -1 -Comprar 5 tomates\n" +
@@ -43,19 +43,19 @@ public class CommandProcessor
             case "editar":
                 if (!(arg1 is null || arg2 is null || args.Count != 3))
                     taskService.UpdateTask(arg1Int, arg2);
-                else utils.FontColor(ConsoleColor.Yellow, $"El comando correcto seria 'editar -[id] -[descripcion]' {utils.HelpEmoji} \n");
+                else utils.FontColor(ConsoleColor.Yellow, $"El comando correcto seria 'editar -[id] -[descripcion]' {Utils.Utils.HelpEmoji} \n");
                 break;
             
             case "eliminar":
                 if (arg1 is null || args.Count != 2) 
-                    utils.FontColor(ConsoleColor.Yellow, $"El comando correcto seria 'eliminar -[id]' {utils.HelpEmoji} \n");
+                    utils.FontColor(ConsoleColor.Yellow, $"El comando correcto seria 'eliminar -[id]' {Utils.Utils.HelpEmoji} \n");
                 else taskService.DeleteTask(arg1Int);
                 break;
             
             case "marcar":
                 if ((args.Count != 3 || string.IsNullOrEmpty(arg1) || string.IsNullOrEmpty(arg2))|| (arg1 != "p" && arg1 != "c"))
                 {
-                    utils.FontColor(ConsoleColor.Yellow, $"El comando correcto seria 'marcar -p|-c -[id]'{utils.HelpEmoji} \n");
+                    utils.FontColor(ConsoleColor.Yellow, $"El comando correcto seria 'marcar -p|-c -[id]'{Utils.Utils.HelpEmoji} \n");
                     return;
                 }
                 if(arg1 == "p") taskService.MarkTaskAsInProgress(arg2Int);
@@ -74,7 +74,7 @@ public class CommandProcessor
                     else taskService.ListToDoTasks();
                 }
                 else 
-                    utils.FontColor(ConsoleColor.Yellow, $"El comando correcto seria 'listar' o 'listar -p|-c|-h' {utils.HelpEmoji} \n");
+                    utils.FontColor(ConsoleColor.Yellow, $"El comando correcto seria 'listar' o 'listar -p|-c|-h' {Utils.Utils.HelpEmoji} \n");
                 break;
             
             case "limpiar":
@@ -82,7 +82,7 @@ public class CommandProcessor
                 break;
             
             default:
-                utils.FontColor(ConsoleColor.Red, $"Ese comando no parece ser valido {utils.ErrorEmoji} \n");
+                utils.FontColor(ConsoleColor.Red, $"Ese comando no parece ser valido {Utils.Utils.ErrorEmoji} \n");
                 break;
         }
     }

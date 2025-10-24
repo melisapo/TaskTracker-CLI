@@ -5,21 +5,21 @@ namespace TaskTrackerCLI.Utils;
 
 public class Utils
 {
-    public string GoodEmoji { get; }= "(๑╹ᵕ╹๑)⸝*";
-    public string HelpEmoji { get; } = "ദ്ദി(˵ •̀ᴗ- ˵) ✧";
-    public string ErrorEmoji { get; } = "( ꩜ ᯅ ꩜;)";
-    public string InprogressEmoji { get; } = "ദ്ദി(ᗜˬᗜ)";
-    public string DoneEmoji { get; } = "✧｡٩(ˊᗜˋ )و✧*｡";
-    public string EmptyEmoji { get; } = "( ╹ -╹)?";
+    public const string GoodEmoji = "(๑╹ᵕ╹๑)⸝*";
+    public const string HelpEmoji = "ദ്ദി(˵ •̀ᴗ- ˵) ✧";
+    public const string ErrorEmoji = "( ꩜ ᯅ ꩜;)";
+    public const string InprogressEmoji = "ദ്ദി(ᗜˬᗜ)";
+    public const string DoneEmoji = "✧｡٩(ˊᗜˋ )و✧*｡";
+    public const string EmptyEmoji = "( ╹ -╹)?";
 
 
     public void PrintTable(List<TaskModel> tasks)
     {
-        int maxDescLength = tasks.Max(t => t.Description.Length);
+        var maxDescLength = tasks.Max(t => t.Description.Length);
         maxDescLength = Math.Max(maxDescLength, "Descripción".Length);
 
         // 2️⃣ Encabezado
-        string header = string.Format(
+        var header = string.Format(
             "{0,-5} {1,-" + maxDescLength + "} {2,-12} {3,-20} {4,-20}",
             "ID", "Descripción", "Estado", "Creado", "Actualizado"
         );
@@ -28,11 +28,11 @@ public class Utils
         
         foreach (var task in tasks)
         {
-            int id = task.Id;
-            string description = task.Description;
-            Status status = task.Status;
-            DateTime createdAt = task.CreatedAt;
-            DateTime updatedAt = task.UpdatedAt;
+            var id = task.Id;
+            var description = task.Description;
+            var status = task.Status;
+            var createdAt = task.CreatedAt;
+            var updatedAt = task.UpdatedAt;
             string statusString;
 
             if (status == Status.PorHacer)
@@ -50,10 +50,7 @@ public class Utils
                 Console.ForegroundColor = ConsoleColor.Green;
             }
             
-            Console.WriteLine(string.Format(
-                        "{0,-5} {1,-" + maxDescLength + "} {2,-12} {3,-20} {4,-20}",
-                        id, description, statusString, createdAt.ToString("g"), updatedAt.ToString("g")
-                        ));
+            Console.WriteLine("{0,-5} {1,-" + maxDescLength + "} {2,-12} {3,-20} {4,-20}", id, description, statusString, createdAt.ToString("g"), updatedAt.ToString("g"));
             Console.ResetColor();
             FontColor(ConsoleColor.Blue, new string('-', header.Length)+"\n");
         }

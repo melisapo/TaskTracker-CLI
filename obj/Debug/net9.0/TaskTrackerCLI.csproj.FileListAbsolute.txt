@@ -12,3 +12,4 @@
 /home/melissa/Programaxion/TaskTrackerCLI/obj/Debug/net9.0/TaskTrackerCLI.pdb
 /home/melissa/Programaxion/TaskTrackerCLI/obj/Debug/net9.0/TaskTrackerCLI.genruntimeconfig.cache
 /home/melissa/Programaxion/TaskTrackerCLI/obj/Debug/net9.0/ref/TaskTrackerCLI.dll
+/home/melissa/Programaxion/TaskTrackerCLI/obj/Debug/net9.0/TaskTrackerCLI.sourcelink.json
