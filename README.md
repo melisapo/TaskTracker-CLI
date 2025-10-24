@@ -38,7 +38,7 @@ Una aplicación de línea de comandos en C# para gestionar tus tareas de manera 
 1. **Clona el repositorio**:
    ```bash
    git clone https://github.com/melisapo/TaskTracker-CLI.git
-   cd task-tracker-cli
+   cd TaskTracker-CLI
    ```
 
 2. **Compila el proyecto**:
