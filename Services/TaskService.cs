@@ -96,6 +96,17 @@ public class TaskService
         }
         _utils.PrintTable(_tasks);
     }
+    
+    public void ListToDoTasks()
+    {
+        var toDoTasks = _tasks.Where(t => t.Status == Status.PorHacer).ToList();
+        if (toDoTasks.Count == 0)
+        {
+            _utils.FontColor(ConsoleColor.Cyan, $"No se ha encontrado ninguna tarea. {_utils.EmptyEmoji}\n");
+            return;
+        }
+        _utils.PrintTable(toDoTasks);
+    }
 
     public void ListInProgressTasks()
     {

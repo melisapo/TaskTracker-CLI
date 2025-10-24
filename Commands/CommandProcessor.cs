@@ -28,6 +28,7 @@ public class CommandProcessor
                               "'marcar -p -[id]' : Marca una tarea como 'En Progreso'. Ej: marcar -p -1\n" +
                               "'marcar -c -[id]' : Marca una tarea como completada. Ej: marcar -c -1\n" +
                               "'listar' : Lista todas las tareas.\n" +
+                              "'listar -h' : Lista todas las tareas por hacer.\n" +
                               "'listar -p' : Lista todas las tareas en progreso.\n" +
                               "'listar -c' : Lista todas las tareas completadas.\n" +
                               "'limpiar' : Limpia la consola.\n" +
@@ -54,7 +55,7 @@ public class CommandProcessor
             case "marcar":
                 if ((args.Count != 3 || string.IsNullOrEmpty(arg1) || string.IsNullOrEmpty(arg2))|| (arg1 != "p" && arg1 != "c"))
                 {
-                    utils.FontColor(ConsoleColor.Yellow, $"El comando correcto seria 'marcar -p/c -[id]'{utils.HelpEmoji} \n");
+                    utils.FontColor(ConsoleColor.Yellow, $"El comando correcto seria 'marcar -p|-c -[id]'{utils.HelpEmoji} \n");
                     return;
                 }
                 if(arg1 == "p") taskService.MarkTaskAsInProgress(arg2Int);
@@ -66,13 +67,14 @@ public class CommandProcessor
                 {
                     taskService.ListTasks();
                 }
-                else if (args.Count == 2 && arg1 is "c" or "p")
+                else if (args.Count == 2 && arg1 is "c" or "p" or "h")
                 {
                     if (arg1 == "c") taskService.ListCompletedTasks();
-                    else taskService.ListInProgressTasks();
+                    else if (arg1 == "p") taskService.ListInProgressTasks();
+                    else taskService.ListToDoTasks();
                 }
                 else 
-                    utils.FontColor(ConsoleColor.Yellow, $"El comando correcto seria 'listar' o 'listar -p/c' {utils.HelpEmoji} \n");
+                    utils.FontColor(ConsoleColor.Yellow, $"El comando correcto seria 'listar' o 'listar -p|-c|-h' {utils.HelpEmoji} \n");
                 break;
             
             case "limpiar":
