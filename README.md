@@ -1,6 +1,8 @@
 #  ˚₊‧꒰ა Task Tracker CLI ໒꒱ ‧₊˚
 
 Una aplicación de línea de comandos en C# para gestionar tus tareas de manera eficiente y organizada.
+Este proyecto fue inspirado por Roadmap.sh: 
+https://roadmap.sh/projects/task-tracker **₊ ⊹**
 
 ## Características Principales (๑╹ᵕ╹๑)⸝*
 
