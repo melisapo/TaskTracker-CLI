@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "w4ex55FW4ZE=",
+  "success": true,
+  "projectFilePath": "/home/melissa/Programaxion/TaskTrackerCLI/TaskTrackerCLI.csproj",
+  "expectedPackageFiles": [
+    "/home/melissa/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.8/microsoft.aspnetcore.app.ref.9.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}

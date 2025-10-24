@@ -1,0 +1,14 @@
+/home/melissa/Programaxion/TaskTrackerCLI/bin/Debug/net9.0/TaskTrackerCLI
+/home/melissa/Programaxion/TaskTrackerCLI/bin/Debug/net9.0/TaskTrackerCLI.deps.json
+/home/melissa/Programaxion/TaskTrackerCLI/bin/Debug/net9.0/TaskTrackerCLI.runtimeconfig.json
+/home/melissa/Programaxion/TaskTrackerCLI/bin/Debug/net9.0/TaskTrackerCLI.dll
+/home/melissa/Programaxion/TaskTrackerCLI/bin/Debug/net9.0/TaskTrackerCLI.pdb
+/home/melissa/Programaxion/TaskTrackerCLI/obj/Debug/net9.0/TaskTrackerCLI.GeneratedMSBuildEditorConfig.editorconfig
+/home/melissa/Programaxion/TaskTrackerCLI/obj/Debug/net9.0/TaskTrackerCLI.AssemblyInfoInputs.cache
+/home/melissa/Programaxion/TaskTrackerCLI/obj/Debug/net9.0/TaskTrackerCLI.AssemblyInfo.cs
+/home/melissa/Programaxion/TaskTrackerCLI/obj/Debug/net9.0/TaskTrackerCLI.csproj.CoreCompileInputs.cache
+/home/melissa/Programaxion/TaskTrackerCLI/obj/Debug/net9.0/TaskTrackerCLI.dll
+/home/melissa/Programaxion/TaskTrackerCLI/obj/Debug/net9.0/refint/TaskTrackerCLI.dll
+/home/melissa/Programaxion/TaskTrackerCLI/obj/Debug/net9.0/TaskTrackerCLI.pdb
+/home/melissa/Programaxion/TaskTrackerCLI/obj/Debug/net9.0/TaskTrackerCLI.genruntimeconfig.cache
+/home/melissa/Programaxion/TaskTrackerCLI/obj/Debug/net9.0/ref/TaskTrackerCLI.dll
