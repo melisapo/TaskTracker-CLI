@@ -21,16 +21,16 @@ class Program
         var langUtils = new Utils.LanguageUtils(languageInput);
         
         langUtils.WelcomeMessage();
-        var processor = new CommandProcessor();
         
         while (true)
         {
             utils.FontColor(ConsoleColor.Cyan," ╰┈➤ ");
+            Console.ResetColor();
             var input = Console.ReadLine()?.Trim();
             if (string.IsNullOrEmpty(input)) continue;
             if (input is "exit") break;
             
-            processor.Process(input, languageInput);
+            CommandProcessor.Process(input, languageInput);
         }
     }
 }

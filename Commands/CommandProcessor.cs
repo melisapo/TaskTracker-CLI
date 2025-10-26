@@ -5,7 +5,7 @@ namespace TaskTrackerCLI.Commands;
 
 public class CommandProcessor
 {
-    public void Process(string input, string languageInput)
+    public static void Process(string input, string languageInput)
     {
         var taskService = new TaskService(languageInput);
         var langUtils = new LanguageUtils(languageInput);
@@ -82,6 +82,7 @@ public class CommandProcessor
             
             default:
                 langUtils.BadCommandMessage();
+                Console.ResetColor();
                 break;
         }
     }

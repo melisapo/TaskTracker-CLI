@@ -26,6 +26,7 @@ public class TaskService
         _tasks.Add(newTask);
         SaveChanges();
         _langUtils.CreatedTaskMessage(description, newTask.Id);
+        Console.ResetColor();
     }
 
     public void UpdateTask(int id, string newDescription)
@@ -35,6 +36,7 @@ public class TaskService
         if (task == null)
         {
             _langUtils.NoTaskMessage();
+            Console.ResetColor();
             return;
         }
         string oldDescription = task.Description;
@@ -42,6 +44,7 @@ public class TaskService
         task.UpdatedAt = DateTime.Now;
         SaveChanges();
         _langUtils.UpdatedTaskMessage(oldDescription, newDescription);
+        Console.ResetColor();
     }
 
     public void DeleteTask(int id)
@@ -51,12 +54,14 @@ public class TaskService
         if (task == null)
         {
             _langUtils.NoTaskMessage();
+            Console.ResetColor();
             return;
         }
         string description = task.Description;
         _tasks.Remove(task);
         SaveChanges();
         _langUtils.DeletedTaskMessage(description);
+        Console.ResetColor();
     }
 
     public void MarkTaskAsInProgress(int id)
@@ -65,6 +70,7 @@ public class TaskService
         if (task == null)
         {
             _langUtils.NoTaskMessage();
+            Console.ResetColor();
             return;
         }
         string description = task.Description;
@@ -72,6 +78,7 @@ public class TaskService
         task.UpdatedAt = DateTime.Now;
         SaveChanges();
         _langUtils.MarkedTaskMessage(description, task.Status);
+        Console.ResetColor();
     }
     
     public void MarkTaskAsCompleted(int id)
@@ -80,6 +87,7 @@ public class TaskService
         if (task == null)
         {
             _langUtils.NoTaskMessage();
+            Console.ResetColor();
             return;
         }
         string description = task.Description;
@@ -87,6 +95,7 @@ public class TaskService
         task.UpdatedAt = DateTime.Now;
         SaveChanges();
         _langUtils.MarkedTaskMessage(description, task.Status);
+        Console.ResetColor();
     }
 
     public void ListTasks()
@@ -94,6 +103,7 @@ public class TaskService
         if (_tasks.Count == 0)
         {
             _langUtils.NoTasksMessage();
+            Console.ResetColor();
             return;
         }
         _utils.PrintTable(_tasks, _langUtils.Language);
@@ -105,6 +115,7 @@ public class TaskService
         if (toDoTasks.Count == 0)
         {
             _langUtils.NoTasksMessage();
+            Console.ResetColor();
             return;
         }
         _utils.PrintTable(toDoTasks, _langUtils.Language);
@@ -116,6 +127,7 @@ public class TaskService
         if (inProgressTasks.Count == 0)
         {
             _langUtils.NoTasksMessage();
+            Console.ResetColor();
             return;
         }
         _utils.PrintTable(inProgressTasks, _langUtils.Language);
@@ -127,6 +139,7 @@ public class TaskService
         if (completedTasks.Count == 0)
         {
             _langUtils.NoTasksMessage();
+            Console.ResetColor();
             return;
         }
         _utils.PrintTable(completedTasks, _langUtils.Language);

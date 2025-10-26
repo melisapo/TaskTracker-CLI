@@ -1,15 +1,11 @@
 namespace TaskTrackerCLI.Utils;
 
-public class LanguageUtils
+public class LanguageUtils(string languageInput)
 {
     private readonly Utils _utils = new();
-    public bool Language { get; }
+    public bool Language { get; } = ProcessLanguage(languageInput);
 
-    public LanguageUtils(string languageInput)
-    {
-        Language = ProcessLanguage(languageInput);
-    }
-    public bool ProcessLanguage(string languageInput)
+    private static bool ProcessLanguage(string languageInput)
     {
         var lang = languageInput == "1";
         return lang;
@@ -64,6 +60,7 @@ public class LanguageUtils
                           "'clear' : Clean the terminal.\n" +
                           "'exit' : Exit TaskTracker.\n");
         }
+        Console.ResetColor();
     }
 
     public void UpdateCommandMessage()
@@ -72,6 +69,7 @@ public class LanguageUtils
             Language
                 ? $"El comando correcto seria 'update -[id] -[descripcion]' {Utils.HelpEmoji} \n"
                 : $"The correct command is 'update -[id] -[description]' {Utils.HelpEmoji} \n");
+        Console.ResetColor();
     }
     public void DeleteCommandMessage()
     {
@@ -79,6 +77,7 @@ public class LanguageUtils
             Language
                 ? $"El comando correcto seria 'delete -[id]' {Utils.HelpEmoji} \n"
                 : $"The correct command is 'delete -[id] -[description]' {Utils.HelpEmoji} \n");
+        Console.ResetColor();
     }
     public void MarkCommandMessage()
     {
@@ -86,6 +85,7 @@ public class LanguageUtils
             Language
                 ? $"El comando correcto seria 'mark -p|-c -[id]' {Utils.HelpEmoji} \n"
                 : $"The correct command is 'mark -p|-c -[id]' {Utils.HelpEmoji} \n");
+        Console.ResetColor();
     }
     public void ListCommandMessage()
     {
@@ -93,6 +93,7 @@ public class LanguageUtils
             Language
                 ? $"El comando correcto seria 'list' o 'list -p|-c|-t' {Utils.HelpEmoji} \n"
                 : $"The correct command is 'list' r 'list -p|-c|-t' {Utils.HelpEmoji} \n");
+        Console.ResetColor();
     }
     public void BadCommandMessage()
     {
@@ -100,6 +101,7 @@ public class LanguageUtils
             Language
                 ? $"Ese comando no parece ser valido {Utils.ErrorEmoji} \n"
                 : $"That command doesn't seem to be valid {Utils.ErrorEmoji} \n");
+        Console.ResetColor();
     }
 
     public void NoTaskMessage()
@@ -108,6 +110,7 @@ public class LanguageUtils
             Language
                 ? $"No se ha encontrado la tarea {Utils.EmptyEmoji} \n"
                 : $"Task not found {Utils.EmptyEmoji} \n");
+        Console.ResetColor();
     }
 
     public void NoTasksMessage()
@@ -116,6 +119,7 @@ public class LanguageUtils
             Language
                 ? $"No se ha encontrado ninguna tarea {Utils.EmptyEmoji} \n"
                 : $"Couldn't find any task {Utils.EmptyEmoji} \n");
+        Console.ResetColor();
     }
 
     public void CreatedTaskMessage(string description, int id)
@@ -124,6 +128,7 @@ public class LanguageUtils
             Language
                 ? $"La tarea '{description}' se ha creado. Id: {id}. {Utils.GoodEmoji} \n"
                 : $"The task '{description}' has been created. Id: {id}. {Utils.GoodEmoji} \n");
+        Console.ResetColor();
     }
     
     public void UpdatedTaskMessage(string description, string newDescription)
@@ -132,6 +137,7 @@ public class LanguageUtils
             Language
                 ? $"La tarea '{description}' se ha actualizado a '{newDescription}'. {Utils.GoodEmoji} \n"
                 : $"The task '{description}' has been updated to '{newDescription}'. {Utils.GoodEmoji} \n");
+        Console.ResetColor();
     }
 
     public void DeletedTaskMessage(string description)
@@ -140,6 +146,7 @@ public class LanguageUtils
             Language
                 ? $"La tarea '{description}' ha sido eliminada. {Utils.GoodEmoji} \n"
                 : $"The task '{description}' has been deleted. {Utils.GoodEmoji} \n");
+        Console.ResetColor();
     }
 
     public void MarkedTaskMessage(string description, Enum.Status status)
@@ -161,5 +168,6 @@ public class LanguageUtils
             default:
                 throw new ArgumentOutOfRangeException(nameof(status), status, null);
         }
+        Console.ResetColor();
     }
 }

@@ -28,6 +28,7 @@ public class Utils
             "ID", "Description", "Status", "CreatedAt", "UpdatedAt"
         );
         FontColor(ConsoleColor.Blue, "\n" + header + "\n");
+        FontColor(ConsoleColor.Blue, new string('-', header.Length));
         
         foreach (var task in tasks)
         {
