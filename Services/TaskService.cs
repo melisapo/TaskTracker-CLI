@@ -7,12 +7,10 @@ public class TaskService
 {
     private readonly List<TaskModel> _tasks;
     private readonly StorageService _storageService;
-    private readonly Utils.Utils _utils;
     private readonly Utils.LanguageUtils _langUtils;
 
     public TaskService(string languageInput)
     {
-        _utils = new Utils.Utils();
         _storageService = new StorageService();
         _tasks = _storageService.Load();
         _langUtils =  new Utils.LanguageUtils(languageInput);
@@ -106,7 +104,7 @@ public class TaskService
             Console.ResetColor();
             return;
         }
-        _utils.PrintTable(_tasks, _langUtils.Language);
+        Utils.Utils.PrintTable(_tasks, _langUtils.Language);
     }
     
     public void ListToDoTasks()
@@ -118,7 +116,7 @@ public class TaskService
             Console.ResetColor();
             return;
         }
-        _utils.PrintTable(toDoTasks, _langUtils.Language);
+        Utils.Utils.PrintTable(toDoTasks, _langUtils.Language);
     }
 
     public void ListInProgressTasks()
@@ -130,7 +128,7 @@ public class TaskService
             Console.ResetColor();
             return;
         }
-        _utils.PrintTable(inProgressTasks, _langUtils.Language);
+        Utils.Utils.PrintTable(inProgressTasks, _langUtils.Language);
     }
     
     public void ListCompletedTasks()
@@ -142,7 +140,7 @@ public class TaskService
             Console.ResetColor();
             return;
         }
-        _utils.PrintTable(completedTasks, _langUtils.Language);
+        Utils.Utils.PrintTable(completedTasks, _langUtils.Language);
     }
 
     private void SaveChanges()

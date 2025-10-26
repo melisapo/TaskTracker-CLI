@@ -10,7 +10,7 @@ Este proyecto fue inspirado por [Roadmap.sh](https://roadmap.sh/projects/task-tr
 - **𐙚 Persistencia de datos**: Guardado automático en archivo JSON
 - **𖹭 Interfaz visual atractiva**: Tablas formateadas con colores y emojis
 - **✿ Filtros inteligentes**: Listar tareas por estado específico
-- **⏾ Fácil de usar**: Comandos intuitivos, ayuda integrada y soporte para espanol e ingles
+- **⏾ Fácil de usar**: Comandos intuitivos, ayuda integrada y soporte para español e ingles
 
 ## Comandos Disponibles ദ്ദി(˵ •̀ᴗ- ˵) ✧
 
@@ -21,7 +21,7 @@ Este proyecto fue inspirado por [Roadmap.sh](https://roadmap.sh/projects/task-tr
 | `update`  | `update -[id] -[descripción]` | Edita una tarea existente. Ej: `update -1 -Comprar 5 tomates` |
 | `delete`  | `delete -[id]`                | Elimina una tarea. Ej: `delete -1`                            |
 | `mark -p` | `mark -p -[id]`               | Marca una tarea como 'En Progreso'. Ej: `mark -p -1`          |
-| `mark -c` | `mark -c -[id]`               | Marca una tarea como completada. Ej: `mark -c -1`             |
+| `mark -c` | `mark -c -[id]`               | Marca una tarea como 'Completada'. Ej: `mark -c -1`           |
 | `list`    | `list`                        | Lista todas las tareas                                        |
 | `list -t` | `list -t`                     | Lista todas las tareas por hacer                              |
 | `list -p` | `list -p`                     | Lista todas las tareas en progreso                            |
@@ -95,8 +95,8 @@ Las tareas se guardan automáticamente en el archivo `Data/data.json` en el dire
 ```
 
 **Estados en JSON:**
-- `0` = Por Hacer
-- `1` = En Progreso
-- `2` = Completada
+- `0` = ToDo
+- `1` = InProgress
+- `2` = Completed
 
 ### ¡Disfruta organizando tus tareas con Task Tracker CLI! ( ˘ ³˘)♥︎

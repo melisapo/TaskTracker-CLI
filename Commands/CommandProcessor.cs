@@ -3,7 +3,7 @@ using TaskTrackerCLI.Utils;
 
 namespace TaskTrackerCLI.Commands;
 
-public class CommandProcessor
+public static class CommandProcessor
 {
     public static void Process(string input, string languageInput)
     {
@@ -15,8 +15,8 @@ public class CommandProcessor
         var arg1 = args.Count > 1 ? args[1].Trim() :  null;
         var arg2 = args.Count > 2 ? args[2].Trim() :  null;
         
-        int.TryParse(arg1, out int arg1Int);
-        int.TryParse(arg2, out int arg2Int);
+        int.TryParse(arg1, out var arg1Int);
+        int.TryParse(arg2, out var arg2Int);
         
         switch (command)
         {
@@ -62,18 +62,32 @@ public class CommandProcessor
                 break;
             
             case "list":
-                if (args.Count == 1)
+                switch (args.Count)
                 {
-                    taskService.ListTasks();
+                    case 1:
+                        taskService.ListTasks();
+                        break;
+                    case 2 when arg1 is "c" or "p" or "h":
+                    {
+                        switch (arg1)
+                        {
+                            case "c":
+                                taskService.ListCompletedTasks();
+                                break;
+                            case "p":
+                                taskService.ListInProgressTasks();
+                                break;
+                            default:
+                                taskService.ListToDoTasks();
+                                break;
+                        }
+
+                        break;
+                    }
+                    default:
+                        langUtils.ListCommandMessage();
+                        break;
                 }
-                else if (args.Count == 2 && arg1 is "c" or "p" or "h")
-                {
-                    if (arg1 == "c") taskService.ListCompletedTasks();
-                    else if (arg1 == "p") taskService.ListInProgressTasks();
-                    else taskService.ListToDoTasks();
-                }
-                else 
-                    langUtils.ListCommandMessage();
                 break;
             
             case "clear":
