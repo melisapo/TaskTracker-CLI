@@ -3,7 +3,7 @@
 Una aplicación de línea de comandos en C# para gestionar tus tareas de manera eficiente y organizada.
 Este proyecto fue inspirado por [Roadmap.sh](https://roadmap.sh/projects/task-tracker) **୨୧**
 
-<img width="4914" height="2766" alt="code_3x_postspark_2025-10-25_23-48-40" src="https://github.com/user-attachments/assets/7c14f0a5-b04f-45fa-813a-ed3f0f7f3928" />
+![code_3x_postspark_2025-10-25_23-48-40](https://github.com/user-attachments/assets/2792a160-4b0b-4d61-ae01-13de35b1d483)
 
 
 ## Características Principales (๑╹ᵕ╹๑)⸝*
