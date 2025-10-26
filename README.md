@@ -10,24 +10,24 @@ Este proyecto fue inspirado por [Roadmap.sh](https://roadmap.sh/projects/task-tr
 - **𐙚 Persistencia de datos**: Guardado automático en archivo JSON
 - **𖹭 Interfaz visual atractiva**: Tablas formateadas con colores y emojis
 - **✿ Filtros inteligentes**: Listar tareas por estado específico
-- **⏾ Fácil de usar**: Comandos intuitivos y ayuda integrada
+- **⏾ Fácil de usar**: Comandos intuitivos, ayuda integrada y soporte para espanol e ingles
 
 ## Comandos Disponibles ദ്ദി(˵ •̀ᴗ- ˵) ✧
 
-| Comando     | Uso                           | Descripción                                                   |
-|-------------|-------------------------------|---------------------------------------------------------------|
-| `ayuda`     | `ayuda`                       | Muestra la lista de todos los comandos disponibles            |
-| `crear`     | `crear -[descripción]`        | Crea una nueva tarea. Ej: `crear -Comprar tomates`            |
-| `editar`    | `editar -[id] -[descripción]` | Edita una tarea existente. Ej: `editar -1 -Comprar 5 tomates` |
-| `eliminar`  | `eliminar -[id]`              | Elimina una tarea. Ej: `eliminar -1`                          |
-| `marcar -p` | `marcar -p -[id]`             | Marca una tarea como 'En Progreso'. Ej: `marcar -p -1`        |
-| `marcar -c` | `marcar -c -[id]`             | Marca una tarea como completada. Ej: `marcar -c -1`           |
-| `listar`    | `listar`                      | Lista todas las tareas                                        |
-| `listar -h` | `listar -h`                   | Lista todas las tareas por hacer                              |
-| `listar -p` | `listar -p`                   | Lista todas las tareas en progreso                            |
-| `listar -c` | `listar -c`                   | Lista todas las tareas completadas                            |
-| `limpiar`   | `limpiar`                     | Limpia la consola                                             |
-| `salir`     | `salir`                       | Sale de la aplicación TaskTracker                             |
+| Comando   | Uso                           | Descripción                                                   |
+|-----------|-------------------------------|---------------------------------------------------------------|
+| `help`    | `help`                        | Muestra la lista de todos los comandos disponibles            |
+| `create`  | `create -[descripción]`       | Crea una nueva tarea. Ej: `create -Comprar tomates`           |
+| `update`  | `update -[id] -[descripción]` | Edita una tarea existente. Ej: `update -1 -Comprar 5 tomates` |
+| `delete`  | `delete -[id]`                | Elimina una tarea. Ej: `delete -1`                            |
+| `mark -p` | `mark -p -[id]`               | Marca una tarea como 'En Progreso'. Ej: `mark -p -1`          |
+| `mark -c` | `mark -c -[id]`               | Marca una tarea como completada. Ej: `mark -c -1`             |
+| `list`    | `list`                        | Lista todas las tareas                                        |
+| `list -h` | `list -h`                     | Lista todas las tareas por hacer                              |
+| `list -p` | `list -p`                     | Lista todas las tareas en progreso                            |
+| `list -c` | `list -c`                     | Lista todas las tareas completadas                            |
+| `clear`   | `clear`                       | Limpia la consola                                             |
+| `exit`    | `exit`                        | Sale de la aplicación TaskTracker                             |
 
 ## Instalación y Configuración ദ്ദി(ᗜˬᗜ)
 
@@ -56,13 +56,13 @@ Este proyecto fue inspirado por [Roadmap.sh](https://roadmap.sh/projects/task-tr
 
 ### Crear una nueva tarea
 ```
- ╰┈➤ crear -Pasear al perro
+ ╰┈➤ create -Pasear al perro
 La tarea 'Pasear al perro' se ha creado. Id: 1. (๑╹ᵕ╹๑)⸝* 
 ```
 
 ### Listar todas las tareas
 ```
- ╰┈➤ listar
+ ╰┈➤ list
 
 ID    Descripción       Estado       Creado               Actualizado         
 ------------------------------------------------------------------------------
@@ -76,7 +76,7 @@ ID    Descripción       Estado       Creado               Actualizado
 
 ### Marcar tarea como completada
 ```
- ╰┈➤ marcar -c -1
+ ╰┈➤ mark -c -1
 La tarea 'Pasear al perro' se ha marcado como 'Completada'✧｡٩(ˊᗜˋ )و✧*｡
 ```
 
