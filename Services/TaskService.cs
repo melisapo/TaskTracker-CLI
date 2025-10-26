@@ -8,12 +8,14 @@ public class TaskService
     private readonly List<TaskModel> _tasks;
     private readonly StorageService _storageService;
     private readonly Utils.Utils _utils;
+    private readonly Utils.LanguageUtils _langUtils;
 
-    public TaskService()
+    public TaskService(string languageInput)
     {
         _utils = new Utils.Utils();
         _storageService = new StorageService();
         _tasks = _storageService.Load();
+        _langUtils =  new Utils.LanguageUtils(languageInput);
     }
 
     public void CreateTask(string description)
@@ -23,7 +25,7 @@ public class TaskService
         TaskModel newTask = new TaskModel(nextId, description);
         _tasks.Add(newTask);
         SaveChanges();
-        _utils.FontColor(ConsoleColor.Green, $"La tarea '{description}' se ha creado. Id: {newTask.Id}. {Utils.Utils.GoodEmoji} \n");
+        _langUtils.CreatedTaskMessage(description, newTask.Id);
     }
 
     public void UpdateTask(int id, string newDescription)
@@ -32,14 +34,14 @@ public class TaskService
 
         if (task == null)
         {
-            _utils.FontColor(ConsoleColor.Cyan, $"No se ha encontrado la tarea. {Utils.Utils.EmptyEmoji}\n");
+            _langUtils.NoTaskMessage();
             return;
         }
         string oldDescription = task.Description;
         task.Description = newDescription;
         task.UpdatedAt = DateTime.Now;
         SaveChanges();
-        _utils.FontColor(ConsoleColor.Green, $"La tarea '{oldDescription}' se ha actualizado a '{newDescription}'. {Utils.Utils.GoodEmoji}\n");
+        _langUtils.UpdatedTaskMessage(oldDescription, newDescription);
     }
 
     public void DeleteTask(int id)
@@ -48,13 +50,13 @@ public class TaskService
 
         if (task == null)
         {
-            _utils.FontColor(ConsoleColor.Cyan, $"No se ha encontrado la tarea. {Utils.Utils.EmptyEmoji}\n");
+            _langUtils.NoTaskMessage();
             return;
         }
         string description = task.Description;
         _tasks.Remove(task);
         SaveChanges();
-        _utils.FontColor(ConsoleColor.Green, $"La tarea '{description}' ha sido eliminada. {Utils.Utils.GoodEmoji}\n");
+        _langUtils.DeletedTaskMessage(description);
     }
 
     public void MarkTaskAsInProgress(int id)
@@ -62,14 +64,14 @@ public class TaskService
         TaskModel? task = _tasks.FirstOrDefault(t => t.Id == id);
         if (task == null)
         {
-            _utils.FontColor(ConsoleColor.Cyan, $"No se ha encontrado la tarea. {Utils.Utils.EmptyEmoji}\n");
+            _langUtils.NoTaskMessage();
             return;
         }
         string description = task.Description;
-        task.Status = Status.EnProgreso;
+        task.Status = Status.InProgress;
         task.UpdatedAt = DateTime.Now;
         SaveChanges();
-        _utils.FontColor(ConsoleColor.Green, $"La tarea '{description}' se ha marcado como 'En Progreso'{Utils.Utils.InprogressEmoji}\n");
+        _langUtils.MarkedTaskMessage(description, task.Status);
     }
     
     public void MarkTaskAsCompleted(int id)
@@ -77,57 +79,57 @@ public class TaskService
         TaskModel? task = _tasks.FirstOrDefault(t => t.Id == id);
         if (task == null)
         {
-            _utils.FontColor(ConsoleColor.Cyan, $"No se ha encontrado la tarea. {Utils.Utils.EmptyEmoji}\n");
+            _langUtils.NoTaskMessage();
             return;
         }
         string description = task.Description;
-        task.Status = Status.Completada;
+        task.Status = Status.Completed;
         task.UpdatedAt = DateTime.Now;
         SaveChanges();
-        _utils.FontColor(ConsoleColor.Green, $"La tarea '{description}' se ha marcado como 'Completada'{Utils.Utils.DoneEmoji}\n");
+        _langUtils.MarkedTaskMessage(description, task.Status);
     }
 
     public void ListTasks()
     {
         if (_tasks.Count == 0)
         {
-            _utils.FontColor(ConsoleColor.Cyan, $"No se ha encontrado ninguna tarea. {Utils.Utils.EmptyEmoji}\n");
+            _langUtils.NoTasksMessage();
             return;
         }
-        _utils.PrintTable(_tasks);
+        _utils.PrintTable(_tasks, _langUtils.Language);
     }
     
     public void ListToDoTasks()
     {
-        var toDoTasks = _tasks.Where(t => t.Status == Status.PorHacer).ToList();
+        var toDoTasks = _tasks.Where(t => t.Status == Status.ToDo).ToList();
         if (toDoTasks.Count == 0)
         {
-            _utils.FontColor(ConsoleColor.Cyan, $"No se ha encontrado ninguna tarea. {Utils.Utils.EmptyEmoji}\n");
+            _langUtils.NoTasksMessage();
             return;
         }
-        _utils.PrintTable(toDoTasks);
+        _utils.PrintTable(toDoTasks, _langUtils.Language);
     }
 
     public void ListInProgressTasks()
     {
-        var inProgressTasks = _tasks.Where(t => t.Status == Status.EnProgreso).ToList();
+        var inProgressTasks = _tasks.Where(t => t.Status == Status.InProgress).ToList();
         if (inProgressTasks.Count == 0)
         {
-            _utils.FontColor(ConsoleColor.Cyan, $"No se ha encontrado ninguna tarea. {Utils.Utils.EmptyEmoji}\n");
+            _langUtils.NoTasksMessage();
             return;
         }
-        _utils.PrintTable(inProgressTasks);
+        _utils.PrintTable(inProgressTasks, _langUtils.Language);
     }
     
     public void ListCompletedTasks()
     {
-        var completedTasks = _tasks.Where(t => t.Status == Status.Completada).ToList();
+        var completedTasks = _tasks.Where(t => t.Status == Status.Completed).ToList();
         if (completedTasks.Count == 0)
         {
-            _utils.FontColor(ConsoleColor.Cyan, $"No se ha encontrado ninguna tarea. {Utils.Utils.EmptyEmoji}\n");
+            _langUtils.NoTasksMessage();
             return;
         }
-        _utils.PrintTable(completedTasks);
+        _utils.PrintTable(completedTasks, _langUtils.Language);
     }
 
     private void SaveChanges()

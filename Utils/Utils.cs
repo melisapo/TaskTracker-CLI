@@ -13,18 +13,21 @@ public class Utils
     public const string EmptyEmoji = "( ╹ -╹)?";
 
 
-    public void PrintTable(List<TaskModel> tasks)
+    public void PrintTable(List<TaskModel> tasks, bool language)
     {
         var maxDescLength = tasks.Max(t => t.Description.Length);
-        maxDescLength = Math.Max(maxDescLength, "Descripción".Length);
+        maxDescLength = Math.Max(maxDescLength + 2, 13);
 
-        // 2️⃣ Encabezado
-        var header = string.Format(
-            "{0,-5} {1,-" + maxDescLength + "} {2,-12} {3,-20} {4,-20}",
+        string header;
+        if(language) header = string.Format(
+            "{0,-5} {1,-" + maxDescLength + "} {2,-12} {3,-23} {4,-23}",
             "ID", "Descripción", "Estado", "Creado", "Actualizado"
         );
+        else header = string.Format(
+            "{0,-5} {1,-" + maxDescLength + "} {2,-12} {3,-23} {4,-23}",
+            "ID", "Description", "Status", "CreatedAt", "UpdatedAt"
+        );
         FontColor(ConsoleColor.Blue, "\n" + header + "\n");
-        
         
         foreach (var task in tasks)
         {
@@ -35,24 +38,43 @@ public class Utils
             var updatedAt = task.UpdatedAt;
             string statusString;
 
-            if (status == Status.PorHacer)
-            {
-                statusString = "Por Hacer";
-            }
-            else if (status == Status.EnProgreso)
-            {
-                statusString = "En Progreso";
-                Console.ForegroundColor = ConsoleColor.Yellow;
-            }
+            if(language)
+                if (status == Status.ToDo)
+                {
+                    statusString = "Por Hacer";
+                }
+                else if (status == Status.InProgress)
+                {
+                    statusString = "En Progreso";
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                }
+                else
+                {
+                    statusString = "Completada";
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
             else
             {
-                statusString = "Completada";
-                Console.ForegroundColor = ConsoleColor.Green;
+                if (status == Status.ToDo)
+                {
+                    statusString = "To Do";
+                }
+                else if (status == Status.InProgress)
+                {
+                    statusString = "In Progress";
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                }
+                else
+                {
+                    statusString = "Completed";
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
             }
             
             Console.WriteLine("{0,-5} {1,-" + maxDescLength + "} {2,-12} {3,-20} {4,-20}", id, description, statusString, createdAt.ToString("g"), updatedAt.ToString("g"));
             Console.ResetColor();
-            FontColor(ConsoleColor.Blue, new string('-', header.Length)+"\n");
+            FontColor(ConsoleColor.Blue, new string('-', header.Length));
+            Console.WriteLine();
         }
     }
 
