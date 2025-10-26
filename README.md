@@ -23,7 +23,7 @@ Este proyecto fue inspirado por [Roadmap.sh](https://roadmap.sh/projects/task-tr
 | `mark -p` | `mark -p -[id]`               | Marca una tarea como 'En Progreso'. Ej: `mark -p -1`          |
 | `mark -c` | `mark -c -[id]`               | Marca una tarea como completada. Ej: `mark -c -1`             |
 | `list`    | `list`                        | Lista todas las tareas                                        |
-| `list -h` | `list -h`                     | Lista todas las tareas por hacer                              |
+| `list -t` | `list -t`                     | Lista todas las tareas por hacer                              |
 | `list -p` | `list -p`                     | Lista todas las tareas en progreso                            |
 | `list -c` | `list -c`                     | Lista todas las tareas completadas                            |
 | `clear`   | `clear`                       | Limpia la consola                                             |
